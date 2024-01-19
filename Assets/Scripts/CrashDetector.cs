@@ -9,12 +9,12 @@ public class CrashDetector : MonoBehaviour
     [SerializeField] ParticleSystem crashEffect;
     CircleCollider2D playerHead;
  
-    private void Start()
+    void Start()
     {
         playerHead = GetComponent<CircleCollider2D>();
     }  
  
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Ground" && playerHead.IsTouching(other.collider))
         {
