@@ -19,13 +19,14 @@ public class CrashDetector : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground" && playerHead.IsTouching(other.collider))
         {
+            FindObjectOfType<PlayerController>().DisableControls();
             crashEffect.Play();
-            GetComponent<AudioSource>().PlayOneShot(crashSFX);
+            GetComponent<AudioSource>().PlayOneShot(crashSFX, 0.5f);
             Invoke("ReloadScene", loadDelay);
         }
     }
 
-    void ReloadScene() 
+    public void ReloadScene() 
     {
         SceneManager.LoadScene(0);
     }
